@@ -1,39 +1,66 @@
 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
 
-Welcome USER_NAME,
+# Code changes:
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+## The video and sample code has the following that doesn’t work without changes:
 
-## Gitpod Reminders
+```
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)
+````
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Causes an error message: “TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'”.
+```
+port=int(os.environ.get('PORT')),
+```
 
-`python3 -m http.server`
+Remove ‘int’.
+```
+port=(os.environ.get('PORT')),
+```
 
-A blue button should appear to click: *Make Public*,
+## The video and sample code has the following that doesn’t work without changes:
 
-Another blue button should appear to click: *Open Browser*.
+```
+@app.route('/about')
+def about():
+    data = []
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+    return render_template("about.html", page_title="About", company=data)
+````
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Causes an error message relating to not finding ‘company.json.
+```
+with open("data/company.json", "r") as json_data:
+```
 
-A blue button should appear to click: *Make Public*,
+Adding ‘flask/’ corrects the path.
 
-Another blue button should appear to click: *Open Browser*.
+```
+with open("flask/data/company.json", "r") as json_data:
+```
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+## Heroku deployment
 
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+1. Create a new repository using the CI Full Template
+2. Copy repository link to VS Code and create/select local DropBox repository.
+3. Develop Python app with Flask.
+4. Test app locally.
+5. Add/Commit/Push Project to GitHub using VS Code SCM (Git) or Git CLI.
+6. Heroku Web: https://dashboard.heroku.com/apps
+    a. Create new app, app name, and region (EU) -> ‘Create app’.
+    b. Deploy: ‘GitHub’ (Connect to GitHub) -> Search for a repository to connect to.
+7. VS Code Terminal: sudo pip3 freeze --local > requirements.txt
+    a. Add/Commit/Push Project to GitHub using VS Code SCM (Git) or Git CLI.
+8. Heroku Web: https://dashboard.heroku.com/apps
+    a. ‘app’ -> Deploy -> ‘Deploy Branch’
+    b. ‘app’…Settings -> ‘Reveal Config Vars’ -> IP 0.0.0.0, PORT 5000
+9. VS Code Terminal: echo web: python3 flask/app.py > Procfile 
+    a. Add/Commit/Push Project to GitHub using VS Code SCM (Git) or Git CLI.
+10. Heroku Web: https://dashboard.heroku.com/apps
+    a. ‘app’ -> Deploy -> ‘GitHub’ (Connect to GitHub) -> Deploy Branch
+    b. ‘More’ -> Restart all Dynos OR VS Code Terminal: Heroku ps:scale web=1
+    c. ‘Open App’
