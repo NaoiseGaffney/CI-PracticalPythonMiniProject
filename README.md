@@ -53,6 +53,7 @@ with open("flask/data/company.json", "r") as json_data:
 6. Heroku Web: https://dashboard.heroku.com/apps
 
     a. Create new app, app name, and region (EU) -> ‘Create app’.
+
     b. Deploy: ‘GitHub’ (Connect to GitHub) -> Search for a repository to connect to.
 
 7. VS Code Terminal: sudo pip3 freeze --local > requirements.txt
@@ -62,6 +63,7 @@ with open("flask/data/company.json", "r") as json_data:
 8. Heroku Web: https://dashboard.heroku.com/apps
 
     a. ‘app’ -> Deploy -> ‘Deploy Branch’
+
     b. ‘app’…Settings -> ‘Reveal Config Vars’ -> IP 0.0.0.0, PORT 5000
 
 9. VS Code Terminal: echo web: python3 flask/app.py > Procfile 
@@ -71,5 +73,7 @@ with open("flask/data/company.json", "r") as json_data:
 10. Heroku Web: https://dashboard.heroku.com/apps
 
     a. ‘app’ -> Deploy -> ‘GitHub’ (Connect to GitHub) -> Deploy Branch
+
     b. ‘More’ -> Restart all Dynos OR VS Code Terminal: Heroku ps:scale web=1
+
     c. ‘Open App’
