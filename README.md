@@ -77,3 +77,13 @@ with open("flask/data/company.json", "r") as json_data:
     b. ‘More’ -> Restart all Dynos OR VS Code Terminal: Heroku ps:scale web=1
 
     c. ‘Open App’
+
+## Security Alerts (startbootstrap files)
+
+We found potential security vulnerabilities in your dependencies. Only the owner of this repository can see this message.
+
+> jquery moderate severity 6 hours ago by GitHub flask/static/package-lock.json #1
+>
+> minimist moderate severity 6 hours ago by GitHub flask/static/package-lock.json
+>
+> kind-of moderate severity 6 hours ago by GitHub flask/static/package-lock.json
