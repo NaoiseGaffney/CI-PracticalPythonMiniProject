@@ -56,7 +56,7 @@ with open("flask/data/company.json", "r") as json_data:
 
     b. Deploy: ‘GitHub’ (Connect to GitHub) -> Search for a repository to connect to.
 
-7. VS Code Terminal: sudo pip3 freeze --local > requirements.txt
+7. VS Code Terminal: sudo pip3 freeze --local > requirements.txt (python3 -m virtualenv virtual)
 
     a. Add/Commit/Push Project to GitHub using VS Code SCM (Git) or Git CLI.
 
